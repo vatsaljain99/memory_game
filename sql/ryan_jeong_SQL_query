@@ -1,0 +1,81 @@
+(SELECT GL_ACCT_NUM, GL_ACCT_NAME, 
+YEAR(MAX(TRANS_DATE)) as myear,MONTH(MAX(TRANS_DATE)) as mmonth,
+DAY(MAX(TRANS_DATE)) as mday,
+end_bal 
+FROM sfcu.GL_100s_income
+
+group by gl_acct_num, year(trans_date), month(trans_date)
+order by gl_acct_num, mmonth, myear)
+
+UNION ALL
+
+(SELECT GL_ACCT_NUM, GL_ACCT_NAME, 
+YEAR(MAX(TRANS_DATE)) as myear,
+MONTH(MAX(TRANS_DATE)) as mmonth,
+DAY(MAX(TRANS_DATE)) as mday,
+end_bal 
+FROM sfcu.GL_200s_expenses
+
+group by gl_acct_num, year(trans_date), month(trans_date)
+order by gl_acct_num, mmonth, myear)
+
+UNION ALL
+
+(SELECT GL_ACCT_NUM, GL_ACCT_NAME, 
+YEAR(MAX(TRANS_DATE)) as myear,
+MONTH(MAX(TRANS_DATE)) as mmonth,
+DAY(MAX(TRANS_DATE)) as mday,
+end_bal 
+FROM sfcu.GL_300s_dividends_writeoffs
+
+group by gl_acct_num, year(trans_date), month(trans_date)
+order by gl_acct_num, mmonth, myear)
+
+UNION ALL
+
+(SELECT GL_ACCT_NUM, GL_ACCT_NAME, 
+YEAR(MAX(TRANS_DATE)) as myear,
+MONTH(MAX(TRANS_DATE)) as mmonth,
+DAY(MAX(TRANS_DATE)) as mday,
+end_bal 
+FROM sfcu.GL_400s_gains_losses
+
+group by gl_acct_num, year(trans_date), month(trans_date)
+order by gl_acct_num, mmonth, myear)
+
+UNION ALL
+
+(SELECT GL_ACCT_NUM, GL_ACCT_NAME, 
+YEAR(MAX(TRANS_DATE)) as myear,
+MONTH(MAX(TRANS_DATE)) as mmonth,
+DAY(MAX(TRANS_DATE)) as mday,
+end_bal 
+FROM sfcu.GL_700s_assets
+
+group by gl_acct_num, year(trans_date), month(trans_date)
+order by gl_acct_num, mmonth, myear)
+
+UNION ALL
+
+(SELECT GL_ACCT_NUM, GL_ACCT_NAME, 
+YEAR(MAX(TRANS_DATE)) as myear,
+MONTH(MAX(TRANS_DATE)) as mmonth,
+DAY(MAX(TRANS_DATE)) as mday,
+end_bal 
+FROM sfcu.GL_800s_liabilities
+
+group by gl_acct_num, year(trans_date), month(trans_date)
+order by gl_acct_num, mmonth, myear)
+
+UNION ALL
+
+(SELECT GL_ACCT_NUM, GL_ACCT_NAME, 
+YEAR(MAX(TRANS_DATE)) as myear,
+MONTH(MAX(TRANS_DATE)) as mmonth,
+DAY(MAX(TRANS_DATE)) as mday,
+end_bal 
+FROM sfcu.GL_900s_equities
+
+group by gl_acct_num, year(trans_date), month(trans_date)
+order by gl_acct_num, mmonth, myear)
+

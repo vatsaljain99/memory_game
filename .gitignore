@@ -1,0 +1,6 @@
+user.py
+*.pyc
+.DS_Store
+*.CSV
+*.csv
+*.idea
